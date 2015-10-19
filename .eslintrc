@@ -1,0 +1,64 @@
+{
+	// http://eslint.org/docs/rules/
+	// http://bl.ocks.org/cletusw/e01a85e399ab563b1236
+	/* REM : http://eslint.org/docs/user-guide/configuring#configuring-rules
+	0 - turn the rule off
+	1 - turn the rule on as a warning (doesn't affect exit code)
+	2 - turn the rule on as an error (exit code is 1 when triggered)
+	*/
+
+	"env": {
+		"amd": true,
+		"browser": true,
+		"mocha": true,
+		"node": true,
+	},
+
+	"ecmaFeatures": {
+	},
+
+	"globals": {
+		"define": true,
+	},
+
+	"plugins": [
+	],
+
+
+	// http://elijahmanor.github.io/talks/js-smells/#/1/8
+	"rules": {
+
+		////////// Possible Errors //////////
+		"comma-dangle": 0,
+		"no-comma-dangle": 0, // don't care about IE8 (only one who can choke at this)
+		"no-cond-assign": [2, "always"],
+		"no-console": 0,
+
+		////////// Best Practices //////////
+		"eqeqeq": 2,
+		"yoda": 2,
+		// Strict Mode
+		// Variables
+		// Node.js
+
+		////////// Stylistic Issues //////////
+		"camelcase": 0, // snake rulzz !
+		"key-spacing": 0, // be free to align or not
+		"max-nested-callbacks": [0, 3], // TODO reactivate later
+		"new-cap": 2,
+		"no-mixed-spaces-and-tabs": 0, // allow it
+		"no-multiple-empty-lines": [1, {max: 3}],  // Maximum of n empty lines
+		"no-trailing-spaces": 2,
+		"quotes": [2, "single"],
+		// ECMAScript 6
+
+		////////// Legacy //////////
+		"max-depth": [2, 5],
+		"max-len": [0, 140], // TODO reactivate later
+		"max-params": 0, // disabled due to requirejs false positives
+		"max-statements": [0, 16], // TODO reactivate later
+
+		// tosort
+		"complexity": [0, 7], // TODO reactivate later
+	}
+}

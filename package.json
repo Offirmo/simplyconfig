@@ -1,0 +1,39 @@
+{
+  "name": "simplyconfig",
+  "version": "0.0.1",
+  "description": "Hierarchical configuration. A replacement to nconf.",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/Offirmo/simplyconfig.git"
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "nsp": "nsp audit-package",
+    "test": "export FOO_API_KEY=27A13 && export BAR_API_KEY=A312 && mocha --debug --check-leaks --require tests/init.js lib/*.spec.js tests/*.spec.js",
+    "testsingle": "export FOO_API_KEY=27A13 && export BAR_API_KEY=A312 && mocha --debug --check-leaks --require tests/init.js lib/store.spec.js"
+  },
+  "xx-commented-pre-commit": [
+    "lint"
+  ],
+  "keywords": [
+    "config",
+    "configuration",
+    "node"
+  ],
+  "author": "Offirmo <offirmo.net@gmail.com>",
+  "license": "Unlicense",
+  "dependencies": {
+    "amdefine": "~1.0.0",
+    "callsite": "~1.0.0",
+    "dotenv": "~1.2.0",
+    "lodash": "~3.10.0"
+  },
+  "devDependencies": {
+    "chai": "^3.2.0",
+    "eslint": "^1.7.0",
+    "mocha": "^2.2.5",
+    "nsp": "^1.0.3",
+    "pre-commit": "^1.0.10"
+  }
+}

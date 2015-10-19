@@ -1,0 +1,24 @@
+[
+	{
+		"name": "FOO_API_KEY",
+		"description": "Secret API key allowing to call the foo service",
+		"required": true
+	},
+	{
+		"name": "NODE_ENV",
+		"description": "The server mode",
+		"default": "development",
+		"required": false,
+		"easyconf_alias": "env"
+	},
+	{
+		"name": "FOO_DATABASE_HOSTNAME",
+		"description": "The database hostname",
+		"required": true
+	},
+	{
+		"name": "FOO_DATABASE_PASSWORD",
+		"description": "The database password",
+		"required": true
+	}
+]
