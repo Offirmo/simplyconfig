@@ -2,6 +2,18 @@ Hierarchical configuration for modern node.js apps. Batteries included : json & 
 
 ![one_does_not](https://cloud.githubusercontent.com/assets/603503/10567810/30dedd02-760e-11e5-984e-075a60b58633.jpg)
 
+TL;DR
+=====
+* :soon: does everything that nconf does :star:
+* clearer API : only one `.add(...)` function , which deep extends former key/values :dizzy:
+* suuport config files as plain json, plain js, node modules and AMD modules :star2:
+* integrated support for patterned config (config.json -> config.development.json -> config.development.local.json) :sparkles:
+* :soon: integrated %extension% in config values
+* integrated `.env` loading :sparkling_heart:
+* allow nconf-like access, but with customizable separator, or plain associative array access
+* :soon: debug feature to know how config was built and where config entries come from
+
+
 Use case
 ========
 Config in a modern node app comes from different source :
