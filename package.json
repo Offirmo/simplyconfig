@@ -27,7 +27,8 @@
     "amdefine": "~1.0.0",
     "callsite": "~1.0.0",
     "dotenv": "~1.2.0",
-    "lodash": "~3.10.0"
+    "lodash": "~3.10.0",
+    "traverse": "~0.6.6"
   },
   "devDependencies": {
     "chai": "^3.2.0",
