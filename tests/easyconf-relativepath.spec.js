@@ -11,6 +11,7 @@ describe('easyconf from another path', function () {
 		describe('add()', function () {
 
 			describe('with files', function () {
+
 				describe('with config as .json', function () {
 					it('should be able to load it with relative path', function () {
 						var config = easyconf.create();
@@ -58,19 +59,6 @@ describe('easyconf from another path', function () {
 					});
 				});
 
-				describe('with environmentalist spec file', function () {
-					it('should be able to load it with relative path', function () {
-						var config = easyconf
-							.create()
-							.add('./fixtures/environmentalist_ok/environmentalist.json');
-
-						expect(config.get()).to.deep.equal({
-							FOO_API_KEY: '27A13',
-							BAR_API_KEY: 'A312',
-							bar_api_key: 'A312' // alias of BAR_API_KEY
-						});
-					});
-				});
 			});
 
 		});
