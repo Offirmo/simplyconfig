@@ -1,23 +1,26 @@
-Hierarchical configuration for modern node.js apps. Batteries included : json & js files, dot-env, environment variables, command-line arguments… Replacement to [nconf](https://github.com/indexzero/nconf).
-
+Hierarchical configuration for modern node.js apps. loads files, environment variables, command-line arguments, plain objects, dot-env… Replacement to [nconf](https://github.com/indexzero/nconf) with extra features :
+ loads from json & js files, load with a relative path, can load files with a pattern, offers value expansion (from env vars + other values), env vars validation, optional dot-env loading…
+ 
 ![one_does_not](https://cloud.githubusercontent.com/assets/603503/10567810/30dedd02-760e-11e5-984e-075a60b58633.jpg)
 
-TL;DR
-=====
-* :soon: does everything that nconf does :star:
+
+# TL;DR
+
+* :soon: loads everything that nconf can load :star:
 * clearer API : only one `.add(...)` function , which deep extends former key/values :dizzy:
-* suuport config files as plain json, plain js, node modules and AMD modules :star2:
+* support config files as plain json, plain js, node modules and AMD modules :star2:
+  (i.e. you can add comments to your config and lint it with eslint/jshint)
 * integrated support for patterned config (config.json -> config.development.json -> config.development.local.json) :sparkles:
-* :soon: integrated %extension% in config values
+* integrated %extension% in config values
 * integrated `.env` loading :sparkling_heart:
-* allow nconf-like access, but with customizable separator, or plain associative array access
+* nconf-like access with customizable separator, or plain associative array access
 * :soon: debug feature to know how config was built and where config entries come from
 
 
-Use case
-========
+# Use case
+
 Config in a modern node app comes from different source :
-* **config files**, usually an associative array, included in source control
+* **config files**, usually an associative array, in JSON and under source control
 * **[command-line arguments](https://en.wikipedia.org/wiki/Command-line_interface#Arguments)**, usually for quick overrides like `--debug-level=info`
 * **[Environment variables](https://en.wikipedia.org/wiki/Environment_variable)** especially for secrets (passwords, API keys), since they MUST NOT be stored in source control
 * **.env file**, used by devops as an alternative for passing environment variables. MUST NOT be under source control.
@@ -36,8 +39,9 @@ And config data is streamlined like that :
 6. `require('config');` (see below for an example of what config should look like)
 
 
-Usage
-=======
+# Usage
+
+## Introduction
 Using simplyconfig is, as you can guess, easy. Just add key/values,
 and each one takes precedence over the previous one (deep extend).
 
@@ -77,13 +81,30 @@ var simplyconfig = require('simplyconfig');
 
 var config = simplyconfig
 	.create()
-	.add({
-		...
-	})
 	.add('../config/config.json')
-	.add('../config/config.production.json');
+	.add('../config/config.development.json');
+	.add('../config/config.development.local.json');
 ```
 
+
+## Real-life example
+
+
+
+## extra
+
+### files
+
+### env
+
+### args
+
+
+
+
+
+
+# TOSORT
 
 Real story
 - duplicate
@@ -110,10 +131,10 @@ var config = simplyconfig.create()
 	.add('./config.js', {pattern: 'env+local'})
 
 	// env vars
-	.add('../../../environmentalist.json')
+	.add('env')
 
 	// args
-	.add('../../../environmentalist.json');
+	.add('args');
 
 
 module.exports = config.get(); // endpoint config : exports the raw data
@@ -138,3 +159,6 @@ local
 
 
 default to development
+
+symfony transforme automatiquement SYMFONY__POSTGRES__USER => %postgres.user%
+

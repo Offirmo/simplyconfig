@@ -10,8 +10,8 @@
   "scripts": {
     "lint": "eslint .",
     "nsp": "nsp audit-package",
-    "test": "export FOO_API_KEY=27A13 && export BAR_API_KEY=A312 && mocha --debug --check-leaks --require tests/init.js lib/*.spec.js tests/*.spec.js",
-    "testsingle": "export FOO_API_KEY=27A13 && export BAR_API_KEY=A312 && mocha --debug --check-leaks --require tests/init.js lib/store.spec.js"
+    "test": "export FOO_API_KEY=27A13 && export BAR_API_KEY=A312 && export NODEJS__server__port=1234 && export FOO__server__port=2345 && export NODEJSxxxserverxxxport=3456 && mocha --debug --check-leaks --require tests/init.js lib/*.spec.js tests/*.spec.js",
+    "testsingle": "export FOO_API_KEY=27A13 && export BAR_API_KEY=A312 && export NODEJS__server__port=1234 && export FOO__server__port=2345 && export NODEJSxxxserverxxxport=3456 && mocha --debug --check-leaks --require tests/init.js lib/store.spec.js"
   },
   "xx-commented-pre-commit": [
     "lint"
