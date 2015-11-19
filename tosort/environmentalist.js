@@ -1,6 +1,19 @@
+'use strict';
 
 
-	Store.prototype._load_from_env = function() {
+module.exports = {
+	check: check_environmentalist
+};
+
+
+function check_environmentalist() {
+
+}
+
+
+///////////////////////////////
+
+Store.prototype._load_from_env = function() {
 		throw new Error('Load from environmentalist spec is no longer supported !');
 		var required_missing = false; // missing required entries, empty so far
 		var data = {};
