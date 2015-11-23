@@ -1,27 +1,16 @@
-Hierarchical configuration for modern node.js apps. loads :
-* files
-* environment variables
-* command-line arguments
-* plain objects
-* dot-env
-
+Hierarchical configuration for modern node.js apps.
 
 # TL;DR
 Replacement to [nconf](https://github.com/indexzero/nconf) with extra features :
-
-* :star: loads everything that nconf can load, and more :
-  * :star2: loads from plain json, plain js files, node modules and AMD modules (i.e. you can add comments to your config and lint it with eslint/jshint)
-  * load with a relative path
-  * :sparkles: integrated support for patterned config (`config.json` -> `config.development.json` -> `config.development.local.json`) 
-  * offers value expansion (from env vars + other values)
-  * :sparkling_heart: integrated `.env` loading for modern devops
-* :dizzy: clearer API : only one `.add(...)` function, which deep extends former key/values
-* integrated %extension% in config values
+* loads everything that nconf can load, but also plain json, plain js files, node modules and AMD modules (i.e. you can add comments to your config and lint it with eslint/jshint)
+* clearer API : only one `.add(...)` function, which deep extends previously added key/values
+* load files from a relative path
 * nconf-like access with customizable separator, or plain associative array access
-* :soon: debug feature to know how config was built and where config entries come from
+* integrated value expansion `%extension%` in config values
+* integrated `.env` loading for modern devops
+* integrated support for patterned config (`config.json` -> `config.development.json` -> `config.development.local.json`) 
 
 ![one_does_not](https://cloud.githubusercontent.com/assets/603503/10567810/30dedd02-760e-11e5-984e-075a60b58633.jpg)
-
 
 # Use case
 
@@ -41,7 +30,7 @@ And config data is streamlined like that :
   * automatically by detecting and replacing %MY_ENV_VAR% in config values (can be disabled/customized, see below)
   * manually by calling `.add('ENV')`. simplyconfig will automatically expand keys, like `NODE__FOO__BAR=baz` giving the `foo.bar : 'baz'` key-value entry in config.
 4. `.add('ARGV')`
-5. `.add('config.json', {pattern: 'ENV+local'})` (see below for this convenient pattern)
+5. `.add('config.json', {pattern: 'env+local'})` (see below for this convenient pattern)
 6. `var config = require('config');` (see below for an example of what `config/index.js` should look like)
 
 
@@ -91,80 +80,69 @@ var config = simplyconfig
 	.add('../config/config.development.json');
 	.add('../config/config.development.local.json');
 ```
+or even better :
+```javascript
+var simplyconfig = require('simplyconfig');
+
+var config = simplyconfig
+	.create()
+	.add({ NODE_ENV: process.env.NODE_ENV || 'development' });
+	.add('../config/config.json', { pattern: 'env+local' });
+```
 
 
 ## Real-life example
 
-
-
-## extra
-
-### files
-
-### env
-
-### args
-
-
-
-
-
-
-# TOSORT
-
-Real story
-- duplicate
-- comments
-- nconf not clear
-- allow relative file (avoid path manipulations)
-
-
-1. allow to use .js for storing data (allows comments and linting)
-2. keep config simple
-3. extend / default
-4. no surprise
-5. auto-extend env vars
-
+```javascript
+'use strict';
 
 var simplyconfig = require('simplyconfig');
 
-var config = simplyconfig.create()
+/** Load .env into process.env
+ */
+simplyconfig.load({ silent: true });
 
-	// parent
-	.add('../../common/config')
+/** Ensure NODE_ENV is defined
+ */
+process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
-	// us
-	.add('./config.js', {pattern: 'env+local'})
+/** Load and expose configuration.
+ */
+module.exports = load();
+module.exports.load = load;
 
-	// env vars
-	.add('env')
+/** Load configuration for a given environment.
+ *
+ * @param  {String} env Asked environment, defaults to process.env.NODE_ENV
+ * @return {Object}     nconf-like configuration object
+ */
+function load(env) {
+  var config = simplyconfig.create();
 
-	// args
-	.add('args');
+  // explicit early definition of NODE_ENV
+  config.add({ NODE_ENV: env || process.env.NODE_ENV || 'development' });
 
+  // files
+  config.add('../../config/config.json', { pattern: 'env+local' });
 
-module.exports = config.get(); // endpoint config : exports the raw data
+  // env vars
+  config.add('ENV');
 
+  // args
+  config.add('ARGV');
 
-create_config().extending(require(…)).with(…)
+  return config;
+}
+```
 
+## extra
+full doc coming soon
 
-'use strict';
+### files
+full doc coming soon
 
-// TODO
+### env
+full doc coming soon
 
-priority
-fallbacks
-
-inherits
-env
-locale
-local
-
-
-
-
-default to development
-
-symfony transforme automatiquement SYMFONY__POSTGRES__USER => %postgres.user%
-
+### args
+full doc coming soon
