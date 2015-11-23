@@ -30,7 +30,7 @@ And config data is streamlined like that :
   * automatically by detecting and replacing %MY_ENV_VAR% in config values (can be disabled/customized, see below)
   * manually by calling `.add('ENV')`. simplyconfig will automatically expand keys, like `NODE__FOO__BAR=baz` giving the `foo.bar : 'baz'` key-value entry in config.
 4. `.add('ARGV')`
-5. `.add('config.json', {pattern: 'ENV+local'})` (see below for this convenient pattern)
+5. `.add('config.json', {pattern: 'env+local'})` (see below for this convenient pattern)
 6. `var config = require('config');` (see below for an example of what `config/index.js` should look like)
 
 
