@@ -1,20 +1,26 @@
-Hierarchical configuration for modern node.js apps. loads files, environment variables, command-line arguments, plain objects, dot-env… Replacement to [nconf](https://github.com/indexzero/nconf) with extra features :
- loads from json & js files, load with a relative path, can load files with a pattern, offers value expansion (from env vars + other values), env vars validation, optional dot-env loading…
- 
-![one_does_not](https://cloud.githubusercontent.com/assets/603503/10567810/30dedd02-760e-11e5-984e-075a60b58633.jpg)
+Hierarchical configuration for modern node.js apps. loads :
+* files
+* environment variables
+* command-line arguments
+* plain objects
+* dot-env
 
 
 # TL;DR
+Replacement to [nconf](https://github.com/indexzero/nconf) with extra features :
 
-* :soon: loads everything that nconf can load :star:
-* clearer API : only one `.add(...)` function , which deep extends former key/values :dizzy:
-* support config files as plain json, plain js, node modules and AMD modules :star2:
-  (i.e. you can add comments to your config and lint it with eslint/jshint)
-* integrated support for patterned config (config.json -> config.development.json -> config.development.local.json) :sparkles:
+* :star: loads everything that nconf can load, and more :
+  * :star2: loads from plain json, plain js files, node modules and AMD modules (i.e. you can add comments to your config and lint it with eslint/jshint)
+  * load with a relative path
+  * :sparkles: integrated support for patterned config (`config.json` -> `config.development.json` -> `config.development.local.json`) 
+  * offers value expansion (from env vars + other values)
+  * :sparkling_heart: integrated `.env` loading for modern devops
+* :dizzy: clearer API : only one `.add(...)` function, which deep extends former key/values
 * integrated %extension% in config values
-* integrated `.env` loading :sparkling_heart:
 * nconf-like access with customizable separator, or plain associative array access
 * :soon: debug feature to know how config was built and where config entries come from
+
+![one_does_not](https://cloud.githubusercontent.com/assets/603503/10567810/30dedd02-760e-11e5-984e-075a60b58633.jpg)
 
 
 # Use case
@@ -34,9 +40,9 @@ And config data is streamlined like that :
 3. simplyconfig does it in 2 ways :
   * automatically by detecting and replacing %MY_ENV_VAR% in config values (can be disabled/customized, see below)
   * manually by calling `.add('ENV')`. simplyconfig will automatically expand keys, like `NODE__FOO__BAR=baz` giving the `foo.bar : 'baz'` key-value entry in config.
-4. `.add('ARGS')`
+4. `.add('ARGV')`
 5. `.add('config.json', {pattern: 'ENV+local'})` (see below for this convenient pattern)
-6. `require('config');` (see below for an example of what config should look like)
+6. `var config = require('config');` (see below for an example of what `config/index.js` should look like)
 
 
 # Usage
