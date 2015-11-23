@@ -9,7 +9,7 @@
   },
   "scripts": {
     "lint": "eslint .",
-    "nsp": "nsp audit-package",
+    "nsp": "nsp check",
     "test": "export FOO_API_KEY=27A13 && export BAR_API_KEY=A312 && export NODEJS__server__port=1234 && export FOO__server__port=2345 && export NODEJSxxxserverxxxport=3456 && mocha --debug --check-leaks --require tests/init.js lib/*.spec.js tests/*.spec.js",
     "testsingle": "export FOO_API_KEY=27A13 && export BAR_API_KEY=A312 && export NODEJS__server__port=1234 && export FOO__server__port=2345 && export NODEJSxxxserverxxxport=3456 && mocha --debug --check-leaks --require tests/init.js lib/store.spec.js"
   },
@@ -31,7 +31,7 @@
     "yargs": "~3.30.0"
   },
   "devDependencies": {
-    "chai": "^3.4.0",
+    "chai": "^3.4.1",
     "eslint": "^1.10.1",
     "mocha": "^2.3.4",
     "nsp": "^2.0.2",
