@@ -145,6 +145,15 @@ function load(env) {
 
 ## detailed usage
 
+### immutability
+simplyconfig tries hard at imutability, since configuration should not be a dynamic registry
+modified everywhere in the code.
+
+Hence :
+* a clone of given data is made at insertion. If given object is modified later, it doesn't affect config
+* a clone of the config data is returned on get(). If modified, returned object doesn't affect config
+
+
 ### options
 Separator for `get()` is `:` by default for nconf compatibility. You can change it :
 ```javascript
@@ -164,3 +173,10 @@ full doc coming soon
 
 ### args
 full doc coming soon
+
+
+# TOREVIEW
+
+* warnings for empty paths
+* test immutability
+* get/set with options
