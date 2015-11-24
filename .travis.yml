@@ -1,13 +1,27 @@
 language: node_js
 node_js:
-  - 0.10
-  - 0.12
-  - 4
-  - 5
+  - "0.10"
+  - "0.12"
+  - "4.2"
+  - "5.1"
 sudo: false
 env:
-  - GRUNT_COMMAND=lint
-  - GRUNT_COMMAND=nsp
-  - GRUNT_COMMAND=test
+  - NPM_SCRIPT=lint
+  - NPM_SCRIPT=nsp
+  - NPM_SCRIPT=test
 script:
-  - "npm run $GRUNT_COMMAND"
+  - "npm run $NPM_SCRIPT"
+matrix:
+  exclude:
+    - node_js: "0.10"
+      env: NPM_SCRIPT=lint
+    - node_js: "0.12"
+      env: NPM_SCRIPT=lint
+    - node_js: "4.2"
+      env: NPM_SCRIPT=lint
+    - node_js: "0.10"
+      env: NPM_SCRIPT=nsp
+    - node_js: "0.12"
+      env: NPM_SCRIPT=nsp
+    - node_js: "4.2"
+      env: NPM_SCRIPT=nsp
