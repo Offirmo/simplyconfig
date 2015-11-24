@@ -135,8 +135,18 @@ function load(env) {
 }
 ```
 
-## extra
-full doc coming soon
+## detailed usage
+
+### options
+Separator for `get()` is `:` by default for nconf compatibility. You can change it :
+```javascript
+var config =
+	easyconf.create({
+		separator: '.'
+	});
+
+	var x = config.get('foo.bar.baz');
+```
 
 ### files
 full doc coming soon
