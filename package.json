@@ -28,7 +28,7 @@
     "callsite": "~1.0.0",
     "dotenv": "~1.2.0",
     "lodash": "~3.10.0",
-    "yargs": "~3.30.0"
+    "optimist": "~0.6.1"
   },
   "devDependencies": {
     "chai": "^3.4.1",
