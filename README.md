@@ -1,5 +1,13 @@
 Hierarchical configuration for modern node.js apps.
 
+
+[![Build Status](https://travis-ci.org/Offirmo/simplyconfig.svg)](https://travis-ci.org/Offirmo/simplyconfig)
+[![NPM version](https://badge.fury.io/js/simplyconfig.png)](http://badge.fury.io/js/simplyconfig)
+[![Project status](http://img.shields.io/badge/project_status-highly_experimental-red.png)](http://offirmo.net/classifying-open-source-projects-status/)
+[![license](http://img.shields.io/badge/license-public_domain-brightgreen.png)](http://unlicense.org/)
+[![Gittip](http://img.shields.io/gittip/Offirmo.png)](https://www.gittip.com/Offirmo/)
+
+
 # TL;DR
 Replacement to [nconf](https://github.com/indexzero/nconf) with extra features :
 * loads everything that nconf can load, but also plain json, plain js files, node modules and AMD modules (i.e. you can add comments to your config and lint it with eslint/jshint)
