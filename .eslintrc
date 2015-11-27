@@ -22,6 +22,7 @@
 	},
 
 	"plugins": [
+		"mocha"
 	],
 
 
@@ -51,6 +52,9 @@
 		"no-trailing-spaces": 2,
 		"quotes": [2, "single"],
 		// ECMAScript 6
+
+		////////// plugins //////////
+		"mocha/no-exclusive-tests": 2,
 
 		////////// Legacy //////////
 		"max-depth": [2, 5],

@@ -146,7 +146,7 @@ function load(env) {
 ## detailed usage
 
 ### immutability
-simplyconfig tries hard at imutability, since configuration should not be a dynamic registry
+simplyconfig tries hard at immutability, since configuration should not be a dynamic registry
 modified everywhere in the code.
 
 Hence :
