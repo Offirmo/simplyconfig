@@ -1,4 +1,8 @@
 
+## 0.3.2 - 2015/12/2
+	- fix a bad reading of current environment
+	- better doc
+	
 ## 0.3.1 - 2015/11/27
 	- added array handling with numeric segments
 	- added a bad parameter check

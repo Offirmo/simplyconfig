@@ -154,7 +154,7 @@ Hence :
 * a clone of the config data is returned on get(). If modified, returned object doesn't affect config
 
 
-### options
+### top-level options
 Separator for `get()` is `:` by default for nconf compatibility. You can change it :
 ```javascript
 var config =
@@ -166,17 +166,46 @@ var config =
 ```
 
 ### files
-full doc coming soon
+Either format are accepted :
+* json `config.add('config.json');`
+* js `config.add('config.js');`
+
+Patterned : A convenient way to hierarchize config is the following :
+* `config.js` <-- safe default
+* `config.production.js`, `config.development.js` <-- specialization for a given environment
+* `config.development.local.js` <-- developper's local changes, this file should be in `.gitignore`
+Each file taking precedence over previous one.
+
+This patter is integrated in simplyconfig : `config.add('config.js', { pattern: 'env+local' });`
+
+For reading the current environment, simplyconfig uses :
+```javascript
+var env = this.get('NODE_ENV') || process.env.NODE_ENV || 'development';
+```
 
 ### env
-full doc coming soon
+`config.add('ENV');` will :
+1. load all env vars at the root of the config (or under `options.root` if provided, see below).
+1. expand env vars with key matching a pattern, like this : `NODEJS__foo__bar` being also added as `foo.bar`
+1. values are expanded as usual
+
+Default options :
+```javascript
+{
+	whitelist: null,  <-- an array of restricted env vars to pick
+	root: '',         <-- where env vars will be added in the config
+	prefix: 'NODEJS', <-- prefix for deep env vars
+	separator: '__'   <-- separator for deep env vars
+}
+```
 
 ### args
-full doc coming soon
+`config.add('ARGV');` will :
+1 load and expand command-line arguments exactly like nconf does (using [optimist](https://www.npmjs.com/package/optimist))
+1. values are expanded as usual
 
 
 # TOREVIEW
 
 * warnings for empty paths
-* test immutability
 * get/set with options
