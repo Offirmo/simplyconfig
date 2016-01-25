@@ -27,7 +27,7 @@
     "amdefine": "~1.0.0",
     "callsite": "~1.0.0",
     "dotenv": "~1.2.0",
-    "lodash": "~3.10.0",
+    "lodash": "~4.0.1",
     "optimist": "~0.6.1"
   },
   "devDependencies": {
