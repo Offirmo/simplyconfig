@@ -1,6 +1,6 @@
 {
   "name": "simplyconfig",
-  "version": "0.3.3",
+  "version": "0.4.0",
   "description": "Hierarchical configuration. A replacement to nconf.",
   "main": "index.js",
   "repository": {
