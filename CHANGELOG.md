@@ -1,4 +1,9 @@
 
+## 0.4.0 - 2016/03/22
+	- added an experimental, optional feature to allow loading from ES2015 modules
+	  Note : This feature is disabled by default
+	  (TODO tests + doc)
+	  
 ## 0.3.3 - 2016/03/22
 	- fixed some error messages referencing this lib former name
 	- fixed some doc
