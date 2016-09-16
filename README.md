@@ -108,7 +108,7 @@ var simplyconfig = require('simplyconfig');
 
 /** Load .env into process.env
  */
-simplyconfig.load({ silent: true });
+simplyconfig.dotenv.load({ silent: true });
 
 /** Ensure NODE_ENV is defined
  */
